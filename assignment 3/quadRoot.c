@@ -12,12 +12,8 @@ int main(){
         scanf("%lf",&a[i]);
     }
     double D = (a[1]*a[1])-4*a[0]*a[2];
-    if (D=0)
-    {
-        root1= -1*a[1]/(2*a[0]);
-        printf("%lf",root1);
-    }
-    else if (D>0)
+    
+    if (D>0)
     {
         root1= ((-1*a[1]) + D)/(2*a[0]);
         root2= ((-1*a[1]) - D)/(2*a[0]);
@@ -30,6 +26,11 @@ int main(){
         a[0]= -1*a[0]/(2*a[0]);
         printf("%lf+ i%lf ",a[0],D);
         printf("%lf- i%lf",a[0],D);
+    }
+    else
+    {
+        root1= -1*a[1]/(2*a[0]);
+        printf("%lf",root1);
     }
     
     
