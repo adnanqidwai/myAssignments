@@ -22,14 +22,13 @@ int determinant(int m, int *p)
         {
             l = 0;
             n = 0;
-            int iclone=0;
-            basic = * (p + iclone);
+            basic = * (p + i);
             for (int j = 0; j < m; j++)
             {
                 for (int k = 0; k < m; k++)
                 {
                     element = *(p + l);
-                    if ((j == 0) || (iclone == k));
+                    if ((j == 0) || (i== k));
                     else
                     {
                         *(q + n) = element;
@@ -41,7 +40,6 @@ int determinant(int m, int *p)
             int inner_determinant = determinant(m - 1, q);
             det= det+ ( sign * basic * inner_determinant);
             
-            iclone++;
             sign=(-1)*sign;    
         }    
         free(q);
