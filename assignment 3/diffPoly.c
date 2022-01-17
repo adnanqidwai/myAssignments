@@ -1,90 +1,167 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-
-int main(){
-    int n;
-    scanf("%d",&n);
-    int a[n+1], b[n];
-    for (int i = 0; i < n+1; i++)
+void print_poly(int a[],int m)
+{
+    int n=m-1, new_start_index, are_all_zero;
+    for (int i = 0; i < n + 1; i++)
     {
-        a[i]=0;
+        if (n==0)
+        {
+            printf("%d",a[n]);
+        }
+        
+        
+        else if (a[0] == 0)
+        {
+            are_all_zero = 1;
+            for (int i = 0; i < n + 1; i++)
+            {
+                if (a[i] != 0)
+                {
+                    are_all_zero = 0;
+                    new_start_index = i;
+                    break;
+                }
+            }
+            if (are_all_zero)
+            {
+                printf("0");
+                exit(0);
+            }
+            else
+            {
+                int k = m- new_start_index;
+                int b[k];
+                for (int i = 0; i < k; i++)
+                {
+                    b[i]=a[i+new_start_index];
+                }
+                print_poly(b, k);
+                exit(0);
+            }
+            
+        }
+        // oldline
+        else if (a[i] != 1 && a[i] != -1 && i != n - 1)
+        {
+            if (a[0] != 0 && i == 0)
+            {
+                printf("%dx^%d", a[0], n);
+            }
+            else if (a[i] > 0 && i == n)
+            {
+                printf(" + %d", a[n]);
+            }
+            else if (a[i] < 0 && i == n)
+            {
+                printf(" - %d", (-1) * a[n]);
+            }
+            else if (a[i] > 0)
+            {
+                printf(" + %dx^%d", a[i], n - i);
+            }
+            else if (a[i] < 0)
+            {
+                printf(" - %dx^%d", (-1) * a[i], n - i);
+            }
+        }
+        else if (a[i] == 1 && i != n - 1)
+        {
+            if (i == 0)
+            {
+                printf("x^%d", n);
+            }
+            else if (i == n)
+            {
+                printf(" + 1");
+            }
+            else
+            {
+                printf(" + x^%d", n - i);
+            }
+        }
+        else if (a[i] == -1 && i != n - 1)
+        {
+            if (i == n)
+            {
+                printf(" - 1");
+            }
+            else if (i == 0)
+            {
+                printf("-x^%d", n - i);
+            }
+            else
+            {
+                printf(" - x^%d", n - i);
+            }
+        }
+        else if (i == n - 1 && i!=0)
+        {
+            if (a[i] == 1)
+            {
+                printf(" + x");
+            }
+            else if (a[i] == -1)
+            {
+                printf(" - x");
+            }
+            else if (a[i] > 0)
+            {
+                printf(" + %dx", a[i]);
+            }
+            else if (a[i] < 0)
+            {
+                printf(" - %dx", (-1) * a[i]);
+            }
+        }
+        else if (i == n - 1 && i==0)
+        {
+            if (a[i] == 1)
+            {
+                printf("x");
+            }
+            else if (a[i] == -1)
+            {
+                printf("-x");
+            }
+            else if (a[i] > 0)
+            {
+                printf("%dx", a[i]);
+            }
+            else if (a[i] < 0)
+            {
+                printf("-%dx", (-1) * a[i]);
+            }
+        }
     }
-    for (int i = 0; i < n+1; i++)
+}
+int main(){
+    int m;
+    scanf("%d", &m);
+    if (m==0)
     {
-        scanf("%d",&a[i]);
+        printf("0"); exit(0);
+    }
+    
+    int n = m - 1;
+    int a[n + 1];
+    int b[n];
+    for (int i = 0; i < n + 1; i++)
+    {
+        a[i] = 0;
+    }
+    for (int i = n; i >= 0; i--)
+    {
+        scanf("%d", &a[i]);
     }
     for (int i = 0; i < n; i++)
     {
         b[i]=a[i]*(n-i);
     }
-    for (int i = 0; i < n; i++)
-    {
-        if (b[i]!=1 && b[i]!=-1 && i!=n-2)
-        {    
-            if (b[0]!=0  && i==0)
-            {
-                printf("%dx^%d",b[0],n-1);
-            }
-            else if (b[i]!=0 &&i ==n-1)
-            {
-                printf("%d",b[n-1]);
-            }
-            else if (b[i]>0)
-            {
-                printf("+%dx^%d",b[i],n-i-1);
-            }
-            else if (b[i]<0)
-            {
-                printf("%dx^%d",b[i],n-i-1);
-            }
-        }
-        else if (b[i]==1 && i!=n-2)
-        {
-            if (i==0)
-            {
-                printf("x^%d",n-1);
-            }
-            else if (i==n-1)
-            {
-                printf("+1");
-            }
-            else
-            {    
-                printf("+x^%d",n-i-1);
-            }        
-        }
-        else if (b[i]==-1 && i!=n-2)
-        {   
-            if (i==n-1)
-            {
-                printf("-1");
-            }
-            else
-            {
-                printf("-x^%d",n-i-1);
-            }       
-        }
-        else if (i==n-2)
-        {
-            if (b[i]==1)
-            {
-                printf("+x");
-            }
-            else if (b[i]==-1)
-            {
-                printf("-x");       
-            }
-            else if (b[i]>0)
-            {
-                printf("+%dx");
-            }
-            else if (b[i]<0)
-            {
-                printf("%dx");
-            }
-            
-            
-        }
+    print_poly(b,n);
+    
+}
         
-    } 
-}    
+   
+  
