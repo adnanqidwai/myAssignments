@@ -4,17 +4,15 @@ int main()
     int n;
     double A[101][101], c, x[101], sum = 0.0;
     scanf("%d", &n); 
-    for (int i = 1; i <= n; i++) // n = 3 1 to 3
+    for (int i = 1;i <=n; i++)
     {
-        for (int j = 1; j < (n + 1); j++)
+        for (int j = 1; j <= n+1 ; j++)
         {
-            scanf("%f", &A[i][j]);
+            scanf("%lf",&A[i][j]);
         }
+        
     }
-    for (int i = 1 ; i <= n+1 ; i++)
-    {
-        scanf("lf",&A[n][i]);
-    }
+    
     
     for (int j = 1; j <= n; j++)
     {
@@ -33,7 +31,7 @@ int main()
     x[n] = A[n][n + 1] / A[n][n];
     for (int i = n - 1; i >= 1; i--)
     {
-        sum = 0;
+        sum = 0.0;
         for (int j = i + 1; j <= n; j++)
         {
             sum = sum + A[i][j] * x[j];
@@ -42,6 +40,6 @@ int main()
     }
     for (int i = 1; i <= n; i++)
     {
-        printf("%lf ", i, x[i]);
+        printf("%lf ", x[i]);
     }
 }        
