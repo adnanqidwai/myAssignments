@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void subtractrowfromrow(double *ptr2, int m, double *ptr1,double k)
+{
+    for (int i = 0; i < m; i++)
+    {
+        *(ptr2+i)=*(ptr2+i) - k*(*(ptr1+i)); 
+    }
+    
+}
 int determinant(int m,int* p)
 {
     int det = 0;
@@ -48,28 +56,73 @@ int determinant(int m,int* p)
 }    
 
 int main(){
-    int n;
+    int n; double k;
     scanf("%d", &n);
-    int m[n][n];
+    int m[n][n]; double l[n][n],u[n][n];
     int *ptr = &m[0][0];
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
         {
             scanf("%d", ptr + n * i + j);
         }
     }
-    int decompexists=0;
+    int decompexists=1;
     for (int i = 1; i < n; i++)
     {
-        if (determinant(i,ptr))
+        if (determinant(i,ptr)==0)
         {
-            decompexists=1;
+            decompexists=0;
+            break;
         }
         
     }
     if (decompexists)
     {
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (i==j)
+                {
+                    l[i][j]=1;
+                }
+                else
+                {
+                    l[i][j]=0;
+                }
+                u[i][j]= 1.0 * m[i][j];
+            }
+        }
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (i>j)
+                {
+                    k=u[i][j] / u[j][j];
+                    l[i][j]= k;   
+                    subtractrowfromrow(&u[i][0],n,&u[j][0],k);
+                }    
+            }
+        }
+        
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                printf("%.5lf ",l[i][j]);
+            }
+            printf("\n");
+        }
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                printf("%.5lf ",u[i][j]);
+            } 
+            printf("\n");
+        }
     }
     else
     {
