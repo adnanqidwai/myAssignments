@@ -2,12 +2,12 @@
  int main(){
     int n,m;
     scanf("%d %d", &m,&n);
-    int a[m][n], b[m][n];
+    long long int a[m][n], b[m][n];
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            scanf("%d",&a[i][j]);
+            scanf("%lld",&a[i][j]);
         }
         
     }
@@ -15,7 +15,7 @@
     {
         for (int j = 0; j < n; j++)
         {
-            scanf("%d",&b[i][j]);
+            scanf("%lld",&b[i][j]);
         }
         
     }
@@ -32,7 +32,7 @@
     {
         for (int j = 0; j < n; j++)
         {
-            printf("%d ",a[i][j]);
+            printf("%lld ",a[i][j]);
         }
         printf("\n");
     }
