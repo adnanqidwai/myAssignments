@@ -7,8 +7,8 @@ int main(){
     scanf("%d",&n);
     for (int i = 0; i < n; i++)
     {
-        xcor= 1.0* (rand()-(RAND_MAX /2))/(RAND_MAX /2);
-        ycor= 1.0* (rand()-(RAND_MAX /2))/(RAND_MAX /2);
+        xcor= ((double)rand()/(RAND_MAX-1));
+        ycor= ((double)rand()/(RAND_MAX-1));
         origdist = ((xcor*xcor)+(ycor*ycor));
         if (origdist<=1)
         {

@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void subtractrowfromrow(double *ptr2, int m, double *ptr1,double k)
-{
-    for (int i = 0; i < m; i++)
-    {
-        *(ptr2+i)=*(ptr2+i) - k*(*(ptr1+i)); 
-    }
+// void subtractrowfromrow(double *ptr2, int m, double *ptr1,double k)
+// {
+//     for (int i = 0; i < m; i++)
+//     {
+//         *(ptr2+i)=*(ptr2+i) - k*(*(ptr1+i)); 
+//     }
     
-}
+// }
 int determinant(int m,int* p)
 {
     int det = 0;
@@ -101,8 +101,13 @@ int main(){
                 if (i>j)
                 {
                     k=u[i][j] / u[j][j];
-                    l[i][j]= k;   
-                    subtractrowfromrow(&u[i][0],n,&u[j][0],k);
+                    l[i][j]= k;
+                    for (int i = 0; i < n; i++)
+                    {
+                        double* ptr1= &u[j][0];
+                        double* ptr2= &u[i][0];
+                        *(ptr2+i)=*(ptr2+i) - k*(*(ptr1+i));
+                    }
                 }    
             }
         }
