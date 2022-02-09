@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 int main(){
+    srand(10);
     int arr[12]={0};
     for (int i = 0; i < 1e6; i++)
     {

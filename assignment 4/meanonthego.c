@@ -2,12 +2,16 @@
 
 
 int main(){
-    int n; float sum=0;
-    scanf("%d",&n);
-    for (int i = 0; i < n; i++)
-    {
+    int n=0; float sum=0;
+    while (1)
+    {    
         int x;scanf("%d",&x);
-        sum+=x;
+        if (x=='\0')
+        {
+            break;
+        }
+        
+        sum+=x;n++;
     }
     printf("%f",sum/n);
 }
