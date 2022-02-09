@@ -15,7 +15,7 @@ int main(){
     int ninput= strinput(str1);
     srand(10);
     
-    FILE *ptr=fopen("test.txt","r");
+    FILE *ptr=fopen("key.txt","r");
 
     for (int i = 0; i < 127; i++)
     {

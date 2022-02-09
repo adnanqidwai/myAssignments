@@ -5,7 +5,7 @@ int main(){
     srand(10);
     char key[n];
     int count0=0,count1=0,count0_0=0,count1_0=0;
-    FILE *ptr= fopen("key_generator.txt","w+");
+    FILE *ptr= fopen("key.txt","w+");
     for (int i = 0; i < 128; i++)
     {
         fprintf(ptr,"%d",key[i]=rand()%2);
