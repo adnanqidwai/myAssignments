@@ -1,0 +1,7 @@
+abcd
+bcde
+cdef
+defg
+efgh
+fghi
+ghij
