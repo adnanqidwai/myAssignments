@@ -1,7 +1,4 @@
-abcd
-bcde
+abc
+bcd
 cdef
-defg
-efgh
-fghi
-ghij
+def
