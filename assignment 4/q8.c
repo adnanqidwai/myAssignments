@@ -2,20 +2,14 @@
 #include <string.h>
 #include <stdlib.h>
 
-int compare(const void *a, const void *b) 
-{ 
-    const char **str_a = (const char **)a;
-    const char **str_b = (const char **)b;
-    return strcmp(*str_a, *str_b);
-} 
 
-int main(){
+int main(int argc,char *argv[]){
     int n1=0,n2=0;
     char temp[100];
     char all[1000][100];
-    FILE *ptr1=fopen("sorted1.txt","r");
-    FILE *ptr2=fopen("sorted2.txt","r");
-    FILE *ptr3=fopen("finalsorted.txt","w+");
+    FILE *ptr1=fopen(argv[1],"r");
+    FILE *ptr2=fopen(argv[2],"r");
+    FILE *ptr3=fopen(argv[3],"w+");
     
     for (int i = 0; fscanf(ptr1,"%s",temp)==1;i++)
     {

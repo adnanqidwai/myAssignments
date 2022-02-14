@@ -1,16 +1,14 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 
-int main(){
-    FILE* f;int count=0;char x;
-    f=fopen("test.txt","r");
-    while ((x=fgetc(f))!=EOF)
-    {
-        if (x!='\n')
-        {
-            count++;
-        }
-    }
-    printf("%d",count);
-    fclose(f);
+int main() {
+  char str1[20] = "C programming";
+  char str2[20]= "c pro";
+
+  // copying str1 to str2
+  strcpy(str2, str1);
+
+  puts(str2); // C programming
+
+  return 0;
 }
