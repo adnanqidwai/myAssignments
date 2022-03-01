@@ -21,12 +21,6 @@ int main()
     }
     for (int i = 0; i < n; i++)
     {
-        //printf("%lld ",a[i]);
-    }
-    //printf("\n");
-    for (int i = 0; i < n; i++)
-    {
-        //printf("%lld\n",k);
         if (k==0)
         {
             break;
